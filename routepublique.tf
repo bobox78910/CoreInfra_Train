@@ -10,7 +10,7 @@ resource "aws_route_table" "BD" {
   vpc_id = "${aws_vpc.mainBD.id}"
 
   route {
-    cidr_block = "172.23.0.0/16"
+    cidr_block = "0.0.0.0/0"
     gateway_id = "${aws_internet_gateway.gwBD.id}"
   }
 
