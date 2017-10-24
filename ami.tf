@@ -36,7 +36,7 @@ data "template_file" "BD" {
     }
 }
 
-resource "aws_instance" "web" {
+resource "aws_instance" "webBD" {
   ami           = "${data.aws_ami.ubuntu.id}"
   instance_type = "t2.micro"
   key_name = "=>Manual import"
@@ -46,3 +46,7 @@ resource "aws_instance" "web" {
     Name = "HelloBDWorld"
   }
 }
+
+output "public_ip" {  
+  value = "${aws_instance.webBD.public_ip}" 
+  }
