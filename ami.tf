@@ -47,6 +47,7 @@ resource "aws_instance" "webBD" {
   instance_type = "t2.micro"
   key_name = "=>Manual import"
   vpc_security_group_ids = ["${aws_security_group.allow_all.id}"]
+  subnet_id = "$aws_subnet.mainBDSUB1.id"
 
   tags {
     Name = "HelloBDWorld"
