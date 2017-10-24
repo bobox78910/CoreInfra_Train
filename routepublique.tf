@@ -19,11 +19,11 @@ resource "aws_route_table" "BD" {
   }
 }
 
-resource "aws_route_table_association" "BD" {
+resource "aws_route_table_association" "BDSUB1" {
   subnet_id      = "${aws_subnet.mainBDSUB1.id}"
   route_table_id = "${aws_route_table.BD.id}"
 }
-resource "aws_route_table_association" "BD" {
+resource "aws_route_table_association" "BDSUB2" {
   subnet_id      = "${aws_subnet.mainBDSUB2.id}"
   route_table_id = "${aws_route_table.BD.id}"
 }
