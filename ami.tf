@@ -25,7 +25,7 @@ resource "aws_security_group" "allow_all" {
     to_port     = 22    
     protocol    = "tcp"    
     cidr_blocks = ["0.0.0.0/0"]  } 
-  => ADD INGRESS FOR PORT 80  
+ # => ADD INGRESS FOR PORT 80  
   egress {    
     from_port       = 0    
     to_port         = 0    
