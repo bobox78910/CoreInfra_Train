@@ -7,6 +7,7 @@ resource "aws_internet_gateway" "gwBD" {
 }
 
 resource "aws_route_table" "BD" {
+  depends_on = ["aws_subnet.mainBDSUB1", "aws_subnet.mainBDSUB2"]
   vpc_id = "${aws_vpc.mainBD.id}"
 
   route {
