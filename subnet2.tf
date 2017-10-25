@@ -4,6 +4,6 @@ resource "aws_subnet" "mainBDSUB2" {
   cidr_block = "172.23.1.0/24"
 
   tags {
-    Name = "MainBD"
+    Name = "MainBDSUB2"
   }
 }
