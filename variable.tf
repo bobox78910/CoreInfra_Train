@@ -9,7 +9,7 @@ variable "BlockBD" {
   default = {
     mainbloc = "172.23.0.0/16"
     blocsub1 = "172.23.0.0/24"
-    blocksub2 = "172.23.1.0/24"
+    blocsub2 = "172.23.1.0/24"
   }
 }
 
