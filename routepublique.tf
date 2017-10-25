@@ -2,7 +2,7 @@ resource "aws_internet_gateway" "gwBD" {
   vpc_id = "${aws_vpc.mainBD.id}"
 
   tags {
-    Name = "mainBD"
+    Name = "mainBDGW"
   }
 }
 
