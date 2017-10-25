@@ -1,4 +1,12 @@
-provider "aws" {
+terraform {
+  backend "S3" {
+   bucket = "${var.bucketBD}"
+   key = "vpc/terraform.tfstate"
+   region= "${var.regionBD}"
+   }
+ }
+ 
+ provider "aws" {
  region     = "${var.regionBD}"
   }
 resource "aws_vpc" "mainBD" {
