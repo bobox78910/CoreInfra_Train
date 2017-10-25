@@ -1,3 +1,14 @@
+data "terraform_remote_state" "vpc" {  
+  backend = "s3"  
+  config {    
+    bucket = "lab-bd"    
+    key    = "vpc/terraform.tfstate"    
+    region = "eu-west-1"  
+    } 
+  }
+
+
+
 data "aws_ami" "ubuntu" {
   most_recent = true
 
