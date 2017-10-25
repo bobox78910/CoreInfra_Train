@@ -38,7 +38,7 @@ resource "aws_security_group" "allow_all" {
 data "template_file" "BD" {  
   template = "${file("${path.module}/userdata.tpl")}"
   vars {    
-    username = "YYYYYYYYYYYYYYYYYYY"
+    username = "root"
     }
 }
 
@@ -46,7 +46,7 @@ resource "aws_instance" "webBD" {
   ami           = "${data.aws_ami.ubuntu.id}"
   instance_type = "t2.micro"
   key_name = "BDkey"
-  #vpc_security_group_ids = ["${aws_security_group.allow_all.id}"]
+  vpc_security_group_ids = ["${aws_security_group.allow_all.id}"]
   subnet_id = "${aws_subnet.mainBDSUB1.id}"
 
   tags {
