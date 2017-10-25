@@ -3,7 +3,7 @@ provider "aws" {
  region     = "${var.regionBD}"
   }
 resource "aws_vpc" "mainBD" {
-  cidr_block       = "${var.BlockBD.mainbloc}"
+  cidr_block       = "${var.BlockBD["mainbloc"]}"
   #instance_tenancy = "dedicated"
 
   tags {
@@ -15,7 +15,7 @@ resource "aws_subnet" "mainBDSUB1" {
   availability_zone = "eu-west-1a"
   vpc_id     = "${aws_vpc.mainBD.id}"
   #map_public_ip_on_launch = true
-  cidr_block = "${var.BlockBD.blocsub2}"
+  cidr_block = "${var.BlockBD["blocsub1"]}"
 
   tags {
     Name = "MainBDSUB1"
@@ -26,7 +26,7 @@ resource "aws_subnet" "mainBDSUB2" {
   availability_zone = "eu-west-1b"
   vpc_id     = "${aws_vpc.mainBD.id}"
   #map_public_ip_on_launch = true
-  cidr_block = "${var.BlockBD.blocsub2}"
+  cidr_block = "${var.BlockBD["blocsub2"]}"
 
   tags {
     Name = "MainBDSUB2"
@@ -106,7 +106,7 @@ data "template_file" "BD" {
 
 resource "aws_instance" "webBD" {
   ami           = "${data.aws_ami.ubuntu.id}"
-  availability_zone = "${element(var.zones,0)}"
+  availability_zone = "${var.zones[0]}"
   instance_type = "t2.micro"
   key_name = "BDkey"
   vpc_security_group_ids = ["${aws_security_group.allow_all.id}"]
