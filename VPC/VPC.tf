@@ -64,7 +64,20 @@ resource "aws_route_table_association" "BDSUB1" {
   subnet_id      = "${aws_subnet.mainBDSUB1.id}"
   route_table_id = "${aws_route_table.BD.id}"
 }
+
 resource "aws_route_table_association" "BDSUB2" {
   subnet_id      = "${aws_subnet.mainBDSUB2.id}"
   route_table_id = "${aws_route_table.BD.id}"
+}
+
+output "vpc_id" {  
+  value = "${aws_vpc.mainBD.id}" 
+}
+
+output "sub1_id" {  
+  value = "${aws_subnet.mainBDSUB1.id}" 
+}
+
+output "sub2_id" {  
+  value = "${aws_subnet.mainBDSUB2.id}" 
 }
