@@ -1,5 +1,5 @@
 terraform {
-  backend "S3" {
+  backend "s3" {
    bucket = "lab-bd"
    key = "vpc/terraform.tfstate"
    region= "eu-west-1"
