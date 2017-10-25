@@ -16,7 +16,7 @@ resource "aws_route_table" "BD" {
   }
 
   tags {
-    Name = "mainBD"
+    Name = "mainBDRoute"
   }
 }
 
