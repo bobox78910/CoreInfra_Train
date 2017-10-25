@@ -1,3 +1,11 @@
+terraform {
+  backend "s3" {
+   bucket = "lab-bd"
+   key = "webapp/terraform.tfstate"
+   region= "eu-west-1"
+   }
+ }
+
 data "terraform_remote_state" "vpc" {  
   backend = "s3"  
   config {    
@@ -27,7 +35,7 @@ data "aws_ami" "ubuntu" {
 resource "aws_security_group" "allow_all" {  
   name        = "allow_BD"  
   description = "Allow all inbound traffic"  
-  vpc_id = "${aws_vpc.mainBD.id}"
+  vpc_id = "${data.terraform_remote_state.vpc.vpc_id}"
   ingress {    
     from_port   = 22    
     to_port     = 22    
@@ -57,7 +65,7 @@ resource "aws_instance" "webBD" {
   key_name = "BDkey"
   vpc_security_group_ids = ["${aws_security_group.allow_all.id}"]
   user_data = "${data.template_file.BD.rendered}" 
-  subnet_id = "${aws_subnet.mainBDSUB1.id}"
+  subnet_id = "${data.terraform_remote_state.vpc.sub1_id}"
   associate_public_ip_address = true
 
   tags {
