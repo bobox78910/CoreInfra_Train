@@ -3,6 +3,10 @@ variable "regionBD" {
   default = "eu-west-1"
 }
 
+variable "bucketBD" {
+  type = "string"
+  default = "lab-bd"
+}
 variable "BlockBD" {
   type = "map"
 
