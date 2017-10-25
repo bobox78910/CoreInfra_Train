@@ -17,7 +17,7 @@ data "aws_ami" "ubuntu" {
 
 
 resource "aws_security_group" "allow_all" {  
-  name        = "allow_all"  
+  name        = "allow_BD"  
   description = "Allow all inbound traffic"  
   vpc_id = "${aws_vpc.mainBD.id}"
   ingress {    
